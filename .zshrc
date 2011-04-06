@@ -6,6 +6,7 @@
 
 zdebug in ~/.zshrc
 
+export GIT_CEILING_DIRECTORIES=$HOME
 export DISPLAY=localhost:0.0
 export CLICOLOR=1
 export LSCOLORS='Cxfxcxdxbxegedabagacad'
