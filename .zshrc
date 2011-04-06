@@ -183,39 +183,39 @@ chpwd ()
 # If ._zdistmaster exists, any local changes detected will be uploaded
 # to $ZDISTSERVER.
 
-ZDISTSERVER=home.metavillage.com
-ZDISTUSER=mlaster
-if [ -e ~/._zdistmaster ]; then
-  if [ ! -e ~/._zlastpush ]; then
-     touch -t 197001011200 ~/._zlastpush
-  fi
-
-    if [ ~/.zlogin -nt ~/._zlastpush -o \
-         ~/.zlogout -nt ~/._zlastpush -o \
-         ~/.zprofile -nt ~/._zlastpush -o \
-         ~/.zshenv -nt ~/._zlastpush -o \
-         ~/.zshrc -nt ~/._zlastpush -o \
-         ~/.vimrc -nt ~/._zlastpush ]; then
-         echo "Pushing zsh rc files to admin"
-         (rsync --archive -q -e /usr/bin/ssh  ~/.z* ~/.vimrc $ZDISTSERVER:~ ; touch ~/._zlastpush) &
-    fi
-
-# $ZDISTSERVER has ~/._zdistserver configured so it will never
-# check for updated files.  Everything else (except ._zdistmaster) will
-# check once a day for updates.
-elif [ ! -e ~/._zdistserver -a $USER = $ZDISTUSER ]; then
-    zmodload zsh/stat
-    if [ ! -e ~/._zlastcheck ]; then
-      touch -t 197001011200 ~/._zlastcheck
-    fi
-    LASTCHECK=`stat +mtime ~/._zlastcheck`
-    touch /tmp/._znow.$UID.$PID
-    NOW=`stat +mtime /tmp/._znow.$UID.$PID`
-    rm /tmp/._znow.$UID.$PID
-    let "(DIFF=$NOW - $LASTCHECK) / 60"
-    zmodload -u zsh/stat
-    if [ $DIFF -gt 302399 ]; then
-        echo "Checking for updated zsh config files"
-        (rsync --archive -q -e /usr/bin/ssh "$ZDISTSERVER:~/(\.z*|.vimrc)" ~ ; touch ~/._zlastcheck) &
-    fi
-fi
+# ZDISTSERVER=home.metavillage.com
+# ZDISTUSER=mlaster
+# if [ -e ~/._zdistmaster ]; then
+#   if [ ! -e ~/._zlastpush ]; then
+#      touch -t 197001011200 ~/._zlastpush
+#   fi
+# 
+#     if [ ~/.zlogin -nt ~/._zlastpush -o \
+#          ~/.zlogout -nt ~/._zlastpush -o \
+#          ~/.zprofile -nt ~/._zlastpush -o \
+#          ~/.zshenv -nt ~/._zlastpush -o \
+#          ~/.zshrc -nt ~/._zlastpush -o \
+#          ~/.vimrc -nt ~/._zlastpush ]; then
+#          echo "Pushing zsh rc files to admin"
+#          (rsync --archive -q -e /usr/bin/ssh  ~/.z* ~/.vimrc $ZDISTSERVER:~ ; touch ~/._zlastpush) &
+#     fi
+# 
+# # $ZDISTSERVER has ~/._zdistserver configured so it will never
+# # check for updated files.  Everything else (except ._zdistmaster) will
+# # check once a day for updates.
+# elif [ ! -e ~/._zdistserver -a $USER = $ZDISTUSER ]; then
+#     zmodload zsh/stat
+#     if [ ! -e ~/._zlastcheck ]; then
+#       touch -t 197001011200 ~/._zlastcheck
+#     fi
+#     LASTCHECK=`stat +mtime ~/._zlastcheck`
+#     touch /tmp/._znow.$UID.$PID
+#     NOW=`stat +mtime /tmp/._znow.$UID.$PID`
+#     rm /tmp/._znow.$UID.$PID
+#     let "(DIFF=$NOW - $LASTCHECK) / 60"
+#     zmodload -u zsh/stat
+#     if [ $DIFF -gt 302399 ]; then
+#         echo "Checking for updated zsh config files"
+#         (rsync --archive -q -e /usr/bin/ssh "$ZDISTSERVER:~/(\.z*|.vimrc)" ~ ; touch ~/._zlastcheck) &
+#     fi
+# fi
