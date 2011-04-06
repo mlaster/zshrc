@@ -1,0 +1,1 @@
+zdebug in ~/.zlogout
