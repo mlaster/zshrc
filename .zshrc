@@ -115,7 +115,6 @@ alias sha1='/usr/bin/openssl sha1'
 
 title() { echo -n -e "\033]0;$*\007" }
 
-export PATH=$HOME/work/sproutcore1/abbot/bin:$PATH
 #
 # Allow per-directory umask settings
 #
