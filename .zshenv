@@ -44,15 +44,4 @@ if [ -d /usr/local/lib/ruby/gems -o -d /usr/lib/ruby/gems ]; then
     export RUBYOPT=-rubygems
 fi
 
-if [ -e /opt/oracle/instantclient_10_2 ]; then
-  export ORACLE_HOME=/opt/oracle/instantclient_10_2
-  export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ORACLE_HOME
-  export PATH=$PATH:$ORACLE_HOME
-  export TNS_ADMIN=$HOME/Library/ISConfig
-fi
-
-if [ -e $HOME/Projects/git/sproutcore1/abbot/bin ] ;then
-   export PATH=$HOME/Projects/git/sproutcore1/abbot/bin:$PATH
-fi
-
 export UDID_TELLURIDE='8245f90ffcb3f0031fe872d4b15badb4433953a8'
