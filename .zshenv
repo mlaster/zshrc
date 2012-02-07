@@ -29,7 +29,7 @@ fi
 # *** setup my search path if necessary
 if [ ! $_ZPATH_SETUP ]; then
 	zdebug "Initial PATH: $PATH"
-	export PATH=~/bin:/usr/local/bin:/usr/local/sbin:$PATH
+	export PATH=~/bin:~/Projects/git/devtools:/usr/local/bin:/usr/local/sbin:$PATH
 	zdebug "PATH set to $PATH"
 	export _ZPATH_SETUP=1
 fi
