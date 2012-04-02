@@ -115,61 +115,61 @@ title() { echo -n -e "\033]0;$*\007" }
 # Allow per-directory umask settings
 #
 
-typeset -g default_umask
-typeset -Ag umask
-default_umask=$(umask)
-
-if [ -r ~/.umask_hash ]; then
-  . ~/.umask_hash
-fi
-
-umask ()
-{
-  if [[ $# -ne 0 ]]; then
-    custom=0
-    set -A keys ${(k)umask[@]}
-
-    for key in $keys; do
-      if [[ $PWD == ${key}** ]]; then
-        custom=1
-        break
-      fi
-    done
-
-    if [[ $custom == 0 ]]; then
-      _orig_umask=$1
-    fi
-
-    _before_umask=$(builtin umask)
-    if [ $_before_umask != $* ] ; then
-      echo "umask $_before_umask => $*" >& 2
-    fi
-  fi
-  builtin umask $*
-}
-
-chpwd ()
-{
-    # Don't override behavior for root
-    if [[ "`whoami`" == "root" ]]; then
-      return
-    fi
-    set -A keys ${(k)umask[@]}
-    um=
-    for key in $keys; do
-        if [[ $PWD == ${key}** ]]; then
-            um=${umask[${key}]}
-            break
-        fi
-    done
-
-    if [[ -z $um ]]; then
-        if [[ -z $_orig_umask ]]; then
-          um=$default_umask
-        else
-          um=$_orig_umask
-        fi
-    fi
-
-    umask $um
-}
+# typeset -g default_umask
+# typeset -Ag umask
+# default_umask=$(umask)
+# 
+# if [ -r ~/.umask_hash ]; then
+#   . ~/.umask_hash
+# fi
+# 
+# umask ()
+# {
+#   if [[ $# -ne 0 ]]; then
+#     custom=0
+#     set -A keys ${(k)umask[@]}
+# 
+#     for key in $keys; do
+#       if [[ $PWD == ${key}** ]]; then
+#         custom=1
+#         break
+#       fi
+#     done
+# 
+#     if [[ $custom == 0 ]]; then
+#       _orig_umask=$1
+#     fi
+# 
+#     _before_umask=$(builtin umask)
+#     if [ $_before_umask != $* ] ; then
+#       echo "umask $_before_umask => $*" >& 2
+#     fi
+#   fi
+#   builtin umask $*
+# }
+# 
+# chpwd ()
+# {
+#     # Don't override behavior for root
+#     if [[ "`whoami`" == "root" ]]; then
+#       return
+#     fi
+#     set -A keys ${(k)umask[@]}
+#     um=
+#     for key in $keys; do
+#         if [[ $PWD == ${key}** ]]; then
+#             um=${umask[${key}]}
+#             break
+#         fi
+#     done
+# 
+#     if [[ -z $um ]]; then
+#         if [[ -z $_orig_umask ]]; then
+#           um=$default_umask
+#         else
+#           um=$_orig_umask
+#         fi
+#     fi
+# 
+#     umask $um
+# }

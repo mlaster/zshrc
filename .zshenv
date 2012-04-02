@@ -3,7 +3,7 @@
 
 ZDEBUG=0
 
-umask 0077
+umask 0022
 
 # *** script debug script ***
 zdebug()
