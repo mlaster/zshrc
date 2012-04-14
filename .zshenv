@@ -5,6 +5,8 @@ ZDEBUG=0
 
 umask 0022
 
+export LC_CTYPE="en_US.UTF-8"
+
 # *** script debug script ***
 zdebug()
 {
