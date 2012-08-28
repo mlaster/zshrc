@@ -39,7 +39,7 @@ fi
 watch=(all)
 
 # *** configure history
-HISTSIZE=1000
+HISTSIZE=2000
 SAVEHIST=1000
 HISTFILE=~/.history
 
@@ -64,6 +64,7 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
 setopt NO_LIST_BEEP
 setopt LIST_PACKED
 setopt LONG_LIST_JOBS
@@ -72,6 +73,7 @@ setopt PATH_DIRS
 setopt PRINT_EIGHT_BIT
 setopt PRINT_EXIT_VALUE
 setopt PUSHD_IGNORE_DUPS
+setopt SHARE_HISTORY
 setopt TRANSIENT_RPROMPT
 
 export USE_FINK=NO
