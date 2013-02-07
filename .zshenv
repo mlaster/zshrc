@@ -37,6 +37,7 @@ if [ ! $_ZPATH_SETUP ]; then
 fi
 
 # *** Setup environment variables
+export CBL_KRB_USER=mlaster
 export CVS_RSH=/usr/bin/ssh
 export RSYNC_RSH=/usr/bin/ssh
 export RUBYLIB=$HOME/lib/ruby
