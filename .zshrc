@@ -24,6 +24,8 @@ RPROMPT='[%?]'
 REPORTTIME=1
 #TMOUT=300
 
+autoload -U compinit && compinit
+
 # *** Set up editing environment
 VI=/usr/bin/vi
 GUI=/Users/mlaster/bin/mate.sh
