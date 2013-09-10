@@ -15,6 +15,9 @@ BAUD=0
 
 # *** set the prompt
 
+precmd () {print -Pn "\e]2; %~/ \a"}
+preexec () {print -Pn "\e]2; %~/ \a"}
+
 
 PROMPT='%B%(2L.>> .)%n@%m:%30<...<%~%<<>%b$(git_super_status) '
 RPROMPT='[%?]'
